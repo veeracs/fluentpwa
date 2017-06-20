@@ -19,3 +19,39 @@ function getEuroRate() {
         // We need to do it the old fashion way
     }
 }
+
+// Push Notifications
+function pushAskPermission() {
+  return new Promise(function(resolve, reject) {
+    const permissionResult = Notification.requestPermission(function(result) {
+      resolve(result);
+    });
+ 
+    if (permissionResult) {
+      permissionResult.then(resolve, reject);
+    }
+  })
+  .then(function(permissionResult) {
+    if (permissionResult !== 'granted') {
+      throw new Error('We weren\'t granted permission.');
+    }
+  });
+}
+
+ 
+// Subscribe a User
+function pushSubscribeUser() {
+  navigator.serviceWorker.getRegistration().then(
+      function(registration) {
+        const subscribeOptions = {
+            userVisibleOnly: true,
+            applicationServerKey: urlBase64ToUint8Array('<REPLACE WITH PUBLIC KEY>')
+        };
+        return registration.pushManager.subscribe(subscribeOptions);
+  })
+  .then(function(pushSubscription) {
+    console.log('Push Subscription: ', JSON.stringify(pushSubscription));
+    return pushSubscription;
+  });
+}
+

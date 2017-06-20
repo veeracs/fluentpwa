@@ -1,0 +1,22 @@
+{
+  "name": "fluentpwa",
+  "version": "1.0.0",
+  "description": "Fluent Conference PWA",
+  "main": "launcher.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veeracs/fluentpwa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/veeracs/fluentpwa/issues"
+  },
+  "homepage": "https://github.com/veeracs/fluentpwa#readme",
+  "devDependencies": {
+    "web-push": "^3.2.2"
+  }
+}
