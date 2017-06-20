@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Activity Launcher</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="launcher.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('serviceworker.js', { scope: '/' })
+        .then((registration) => {
+          console.log('Service worker is registered!!!');
+        })
+        .catch(error => {
+          console.log('Service worker is not registered');
+        })
+    }
+  </script>
+</head>
+<body>
+  Fluent PWA 2017
+</body>
+</html>
