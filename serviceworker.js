@@ -2,52 +2,36 @@
 console.log('Hellow from SW');
 
 
-var urls = ['/', 'styles.css', 'launcher.js'];
+var urls = [
+  '/',
+  'styles1.css',
+  'launcher.js',
+  'https://fonts.googleapis.com/icon?family=Material+Icons',
+  'https://fonts.gstatic.com/s/materialicons/v22/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2'
+];
  
 self.addEventListener("install", (event) => {
-    console.log('The SW is now installed');
+    console.log('The SW is now installed'); 
     event.waitUntil(
       caches.open('activityLauncher').then(cache => cache.addAll(urls))
     );
 });
 
-self.addEventListener("fetch", (event) => {
-    event.respondWith(
-      caches.match(event.request)
+self.addEventListener('fetch', function(event) {
+event.respondWith(
+    caches.match(event.request)
         .then((response) => {
-            if (response) {
-                console.log(`The request ${event.request.url} is in the cache!`); 
-                // We use the currently cached version if it exits
-                return response;
-            } else {
-                console.log(`We need to go to the network for ${event.request.url}`);
-                // Even if the response is in the cache, we fetch it and update the cache for future usage
-                return fetch(event.request).then(
-                  (networkResponse) => {
-                    // http responses are buffers, so that means they need to be cloned
-                    caches.put(event.request, networkResponse.clone());
-                    return networkResponse;
-                  }
-                );
-            }
+            // Even if the response is in the cache, we fetch it
+            // and update the cache for future usage
+            var fetchPromise = fetch(event.request).then(
+                function(networkResponse) {
+                    caches.open("activityLauncher").then(function(cache) {
+                        cache.put(event.request, networkResponse.clone());
+                        return networkResponse;
+                    });
+                });
+            // We use the currently cached version if it's there
+            return response || fetchPromise;
         })
     );
 });
-
-self.addEventListener('activate', function(event) {
-  // Array of cache that we will use in this version
-  var cacheWhitelist = ['pages-cache-v1', 'blog-posts-cache-v1']; 
-  event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames.map(function(cacheName) {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            // Deletes the cache because we won't use it here
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});    
-

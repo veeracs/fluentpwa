@@ -1,0 +1,12 @@
+{
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#027528",
+  "icons": [
+    {
+      "src": "home.png"
+    }
+  ],
+  "background_color": "#fff"
+}

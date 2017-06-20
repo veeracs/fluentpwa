@@ -1,0 +1,33 @@
+  body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    h1 {
+        font-size: large;
+        text-align: center;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+    li {
+        margin: 10px;
+        padding: 0px;
+        background-color: #ddd;
+        float: left;
+    }
+    
+    .material-icons {
+        font-size: 50px;
+    }
+    li p {
+        font-size: small;
+    }
+    a { 
+        width: 70px;
+        height: 120px;        
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+    }
+    

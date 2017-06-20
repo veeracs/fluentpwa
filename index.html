@@ -2,8 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="manifest" href="manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="msapplication-starturl" content="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Activity Launcher</title>
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="styles1.css">
   <script src="launcher.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
@@ -18,6 +24,84 @@
   </script>
 </head>
 <body>
-  Fluent PWA 2017
+<h1>Activity Launcher</h1>
+<ul>
+    <li><a href="https://maps.google.com/?q=Miami">
+        <i class="material-icons">map</i>
+        <p>Miami Map</p>
+    </a></li>
+    <li><a href="https://maps.google.com/?q=104+Market+St.+San+Francisco%2C+CA">
+        <i class="material-icons">map</i>
+        <p>Work Place Map</p>
+    </a></li>  
+    <li><a href="https://maps.apple.com/?q=104+Market+St.+San+Francisco%2C+CA">
+        <i class="material-icons">map</i>
+        <p>Work Place Map</p>
+    </a></li> 
+    <li><a href="https://maps.apple.com/?daddr=104+Market+St.+San+Francisco%2C+CA">
+        <i class="material-icons">directions</i>
+        <p>Drive to Work (AM)</p>
+    </a></li>   
+    <li><a href="https://maps.google.com/?daddr=104+Market+St.+San+Francisco%2C+CA">
+        <i class="material-icons">directions</i>
+        <p>Drive to Work (GM)</p>
+    </a></li>  
+    <li><a href="https://maps.google.com/?saddr=Big+Ben&daddr=Hyde+Park%2C+London&dirflg=w">
+        <i class="material-icons">directions_walk</i>
+        <p>Walk to the Park</p>
+    </a></li>   
+    <li><a href="https://maps.apple.com/?saddr=Big+Ben&daddr=Hyde+Park%2C+London&dirflg=r">
+        <i class="material-icons">directions_transit</i>
+        <p>Transit to the Park</p>
+    </a></li>
+    <li><a href="https://m.uber.com/ul/?action=setPickup&pickup=my_location">
+        <i class="material-icons">local_taxi</i>
+        <p>Call an Uber</p>
+    </a></li>       
+    <li><a href="sms:12345678?body=I%27m+late">
+        <i class="material-icons">message</i>
+        <p>Text Wife</p>
+    </a></li>       
+     <li><a href="whatsapp://send?text=I%27m+late">
+        <i class="material-icons">message</i>
+        <p>Whatsapp Wife</p>
+    </a></li>       
+     <li><a href="tg:msg?text=I%27m+late">
+        <i class="material-icons">message</i>
+        <p>Telegram Friend</p>
+    </a></li>       
+     <li><a href="fb-messenger://share?link=http://">
+        <i class="material-icons">message</i>
+        <p>Send by Messenger</p>
+    </a></li>       
+     <li><a href="tel:+541145454545">
+        <i class="material-icons">call</i>
+        <p>Call Mom</p>
+    </a></li>       
+     <li><a href="facetime:user@domain.com">
+        <i class="material-icons">video_call</i>
+        <p>Facetime John</p>
+    </a></li>       
+     <li><a href="facetime-audio:user@domain.com">
+        <i class="material-icons">call</i>
+        <p>Audio Facetime John</p>
+    </a></li>       
+     <li><a href="skype:mary89?call">
+        <i class="material-icons">call</i>
+        <p>Skype Mary</p>
+    </a></li>       
+     <li><a href="skype:mary89?call&video=true">
+        <i class="material-icons">video_call</i>
+        <p>Video Skype Mary</p>
+    </a></li>       
+     <li><a href="https://twitter.com/intent/tweet">
+        <i class="material-icons">add</i>
+        <p>New Tweet</p>
+    </a></li>       
+     <li><a href="snapchat://">
+        <i class="material-icons">camera</i>
+        <p>Start Snapchat</p>
+    </a></li>                  
+</ul>
 </body>
 </html>
