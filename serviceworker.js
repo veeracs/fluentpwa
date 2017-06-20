@@ -37,14 +37,44 @@ event.respondWith(
 
 // Service Worker's changes for Sync
 self.addEventListener("sync", function(event) {
-    if (event.tag=="eurocheck") {
-        event.waitUntil(fetch("http://api.fixer.io/latest?base=USD")
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(response) {
-                console.log(response.rates.EUR);
-            })
-        );
-    }
+  if (event.tag=="eurocheck") {
+      event.waitUntil(fetch("http://api.fixer.io/latest?base=USD")
+          .then(function(response) {
+              return response.json();
+          })
+          .then(function(response) {
+              console.log(response.rates.EUR);
+          })
+      );
+  }
+});
+
+self.addEventListener('push', (event) => {
+  console.log(event);
+  if (event.data) {
+    console.log('Push data', event.data.text());
+  } else {
+    console.log('No data..');
+  }
+  self.registration.showNotification('Push title', {
+    body: event.data.text()
+  });
+});
+
+
+// Notification Click detection
+self.addEventListener('notificationclick', function(event) {
+  if (!event.action) {
+    console.log('Notification Click with no action');
+    return;
+  } else {
+    // event action has the action id
+  }
+  self.registration.showNotification("Push title", {
+        body: event.data.text()
+  });
+  event.notification.close();
+  event.waitUntil(() => {
+    console.log('Do something...');
+  });
 });
