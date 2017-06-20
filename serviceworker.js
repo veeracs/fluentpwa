@@ -1,7 +1,6 @@
 
 console.log('Hellow from SW');
 
-
 var urls = [
   '/',
   'styles1.css',
@@ -9,7 +8,7 @@ var urls = [
   'https://fonts.googleapis.com/icon?family=Material+Icons',
   'https://fonts.gstatic.com/s/materialicons/v22/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2'
 ];
- 
+
 self.addEventListener("install", (event) => {
     console.log('The SW is now installed'); 
     event.waitUntil(
@@ -34,4 +33,18 @@ event.respondWith(
             return response || fetchPromise;
         })
     );
+});
+
+// Service Worker's changes for Sync
+self.addEventListener("sync", function(event) {
+    if (event.tag=="eurocheck") {
+        event.waitUntil(fetch("http://api.fixer.io/latest?base=USD")
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(response) {
+                console.log(response.rates.EUR);
+            })
+        );
+    }
 });
