@@ -1,4 +1,7 @@
 {
+  "name": "Activity Launcher App",
+  "short_name": "Activity Launcher",
+  "description": "An activity launcher",
   "lang": "en-US",
   "start_url": "/",
   "display": "standalone",

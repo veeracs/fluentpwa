@@ -11,17 +11,6 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="styles1.css">
   <script src="launcher.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('serviceworker.js', { scope: '/' })
-        .then((registration) => {
-          console.log('Service worker is registered!!!');
-        })
-        .catch(error => {
-          console.log('Service worker is not registered');
-        })
-    }
-  </script>
 </head>
 <body>
 <h1>Activity Launcher</h1>
